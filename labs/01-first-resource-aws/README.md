@@ -22,7 +22,7 @@
    ```bash
    terraform plan
    ```
-4. **Apply changes to provision S3 bucket**:
+4. **Apply changes to provision resources**:
    ```bash
    terraform apply
    ```
