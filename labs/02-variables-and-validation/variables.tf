@@ -1,28 +1,24 @@
 variable "aws_region" {
+  description = "The AWS region to deploy resources in"
   type        = string
-  description = "AWS Region"
   default     = "us-east-1"
 }
 
 variable "environment" {
+  description = "The environment for the resources (e.g., dev, staging, prod)"
   type        = string
-  description = "Deployment environment (dev, staging, prod)"
   default     = "dev"
 
-  # 004 Exam objective: Custom Validation block
+  #Regla de validación: el entorno debe ser estrictamente uno de estos tres validation
+
   validation {
     condition     = contains(["dev", "staging", "prod"], var.environment)
-    error_message = "The environment variable must be one of: dev, staging, prod."
+    error_message = "The environment must be one of 'dev', 'staging', or 'prod'."
   }
 }
 
 variable "instance_count" {
-  type        = number
   description = "Number of instances to create"
-  default     = 1
-
-  validation {
-    condition     = var.instance_count >= 1 && var.instance_count <= 5
-    error_message = "The instance count must be a number between 1 and 5."
-  }
+  type        = number
+  default     = 2
 }

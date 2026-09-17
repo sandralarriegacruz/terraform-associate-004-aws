@@ -1,21 +1,67 @@
-# Derived local values
+provider "aws" {
+  region = var.aws_region
+}
+
+# Bloque para estandarizar nombres de etiquetas (tags)
 locals {
-  name_prefix = "app-${var.environment}"
   common_tags = {
     Environment = var.environment
-    Count       = var.instance_count
+    Project     = "my-terraform-project"
+    ManagedBy   = "Terraform"
+    Owner       = "Sandra Student"
   }
 }
 
-# Create multiple S3 buckets using validated input variables
-resource "random_id" "suffix" {
-  count       = var.instance_count
-  byte_length = 3
+# Creamos una VPC cuyo nombre depende del entorno
+resource "aws_vpc" "this" {
+  cidr_block           = "10.0.0.0/16"
+  enable_dns_hostnames = true
+
+  tags = merge(local.common_tags, {
+    Name = "${var.environment}-vpc"
+  })
 }
 
-resource "aws_s3_bucket" "validated_bucket" {
-  count  = var.instance_count
-  bucket = "${local.name_prefix}-bucket-${count.index + 1}-${random_id.suffix[count.index].hex}"
 
-  tags = local.common_tags
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

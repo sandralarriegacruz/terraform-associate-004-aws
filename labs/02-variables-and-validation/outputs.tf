@@ -1,9 +1,9 @@
-output "bucket_names" {
-  value       = aws_s3_bucket.validated_bucket[*].id
-  description = "List of created S3 bucket names"
+output "vpc_id" {
+  value       = aws_vpc.this.id
+  description = "The ID of the created VPC"
 }
 
-output "environment_used" {
+output "deployment_environment" {
   value       = var.environment
-  description = "Validated environment value"
+  description = "The deployment environment"
 }
