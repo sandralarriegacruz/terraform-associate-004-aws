@@ -1,8 +1,8 @@
-# 🧪 Lab 01: First Resource on AWS (S3 Bucket + Random Suffix)
+# 🧪 Lab 01: First Resource on AWS (VPC)
 
 ## 🎯 Lab Objectives
 1. Experience the primary Terraform CLI workflow (`init`, `plan`, `apply`, `destroy`).
-2. Understand how Terraform downloads the AWS provider and `hashicorp/random` plugin.
+2. Understand how Terraform downloads and locks the AWS provider using `.terraform.lock.hcl`.
 3. Inspect the generation of the local `terraform.tfstate` file.
 
 ---
@@ -29,7 +29,7 @@
 5. **Inspect state file**:
    ```bash
    terraform state list
-   terraform state show aws_s3_bucket.lab_bucket
+   terraform state show aws_vpc.main
    ```
 6. **Clean up resources**:
    ```bash
